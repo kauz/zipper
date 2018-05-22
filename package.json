@@ -1,0 +1,14 @@
+{
+  "name": "zipper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Aleksey Olenyuk",
+  "dependencies": {
+    "adm-zip": "~0.4.7",
+    "gulp": "~3.9.0",
+    "gulp-util": "~3.0.2",
+    "gulp-zip": "~2.0.2",
+    "optimist": "~0.6.1",
+    "q": "~1.4.1"
+  }
+}

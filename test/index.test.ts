@@ -50,4 +50,18 @@ context('Zipper', () => {
 
   });
 
+
+  describe('getFileContent', () => {
+
+    it('should read content of archived file', async () => {
+      const source = './test/resources/unzip/arch.zip';
+      const filePath = 'test.txt';
+
+      const content = await Zipper.getFileContent({ filePath, src: source });
+
+      expect(content).to.equal('hello world\r\n');
+    });
+
+  });
+
 });

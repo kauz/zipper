@@ -1,6 +1,6 @@
 export interface iOptions {
   src: string;
-  dest: string;
+  dest?: string;
   filePath?: string;
   name?: string;
   ignore?: string;

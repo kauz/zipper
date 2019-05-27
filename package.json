@@ -3,12 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Aleksey Olenyuk",
+  "scripts": {
+    "build": "tsc -d -p tsconfig.json"
+  },
   "dependencies": {
     "adm-zip": "~0.4.7",
     "gulp": "~3.9.0",
     "gulp-util": "~3.0.2",
     "gulp-zip": "~2.0.2",
-    "optimist": "~0.6.1",
-    "q": "~1.4.1"
+    "optimist": "~0.6.1"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.4.32",
+    "@types/node": "^12.0.2",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.2.0",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.8.0",
+    "tslint-eslint-rules": "^5.1.0",
+    "typescript": "^3.4.5"
   }
 }

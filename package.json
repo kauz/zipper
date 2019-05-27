@@ -4,7 +4,8 @@
   "main": "index.js",
   "author": "Aleksey Olenyuk",
   "scripts": {
-    "build": "tsc -d -p tsconfig.json"
+    "build": "tsc -d -p tsconfig.json",
+    "test": "mocha -r ts-node/register ./test/**/*.test.ts --exit"
   },
   "dependencies": {
     "adm-zip": "~0.4.7",
@@ -15,7 +16,11 @@
   },
   "devDependencies": {
     "@types/adm-zip": "^0.4.32",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
     "@types/node": "^12.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
     "nodemon": "^1.19.1",
     "ts-node": "^8.2.0",
     "tslint": "^5.16.0",

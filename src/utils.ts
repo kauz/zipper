@@ -8,7 +8,7 @@ export class Utils {
   private static stat = promisify(stat);
   private static exec = promisify(exec);
 
-  static runNativeZipping(options: iOptions): Promise<any> {
+  static runNativeZipping(options: iOptions): Promise<void> {
     const processParams = ['../scripts/zip.sh', options.src, options.dest, options.name];
 
     if (options.compression !== undefined) {
@@ -28,7 +28,7 @@ export class Utils {
       process.on('close', (code, signal) => {
         console.log('zipping code', code, signal);
         if (!code) {
-          resolve(); //todo: check stdout
+          resolve();
         } else {
           reject(new Error(`Code: ${code}`));
         }
@@ -43,7 +43,7 @@ export class Utils {
     });
   }
 
-  static runNativeUnzipping(options: iOptions): Promise<any> {
+  static runNativeUnzipping(options: iOptions): Promise<void> {
     console.time('native');
     console.log(__dirname);
     const process = spawn('sh', ['../scripts/unzip.sh', options.src, options.dest], { cwd: __dirname });
@@ -60,7 +60,7 @@ export class Utils {
         console.timeEnd('native');
         console.log('unzipping code', code, signal);
         if (!code) {
-          resolve(); //todo: check stdout
+          resolve();
         } else {
           reject(new Error(`Code: ${code}`));
         }

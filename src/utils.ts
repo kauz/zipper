@@ -38,8 +38,8 @@ export class Utils {
   }
 
   static async runGulpZipping(options: iOptions): Promise<{stdout: string, stderr: string}> {
-    return await Utils.exec(`gulp zip --src ${options.src} --dest ${options.dest} --name ${options.name} --ignore "${options.ignore}"`, {
-      cwd: join(__dirname, 'scripts'),
+    return await Utils.exec(`gulp zip --src ${options.src} --dest ${options.dest} --name ${options.name}`, {
+      cwd: join(__dirname, '../scripts'),
     });
   }
 
@@ -72,7 +72,7 @@ export class Utils {
   static async runAdmUnzipping(options: iOptions): Promise<{stdout: string, stderr: string}> {
     console.time('adm');
     const stdout = await Utils.exec(`node unzip --src ${options.src} --dest ${options.dest} --overwrite ${options.overwrite || false}`, {
-      cwd: join(__dirname, 'scripts'),
+      cwd: join(__dirname, '../scripts'),
     });
     console.timeEnd('adm');
     return stdout;

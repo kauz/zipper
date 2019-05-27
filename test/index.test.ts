@@ -3,6 +3,7 @@ import { describe, it, after } from 'mocha';
 import { Zipper } from '../src';
 import { stat, unlink, readFile } from 'fs';
 import { promisify } from 'util';
+import { platform } from 'os';
 
 
 context('Zipper', () => {
@@ -13,11 +14,12 @@ context('Zipper', () => {
       const statAsync = promisify(stat);
       const source = './test/resources/zip';
       const destination = './test/resources/zip.zip';
+      const size = platform() === 'win32' ? 129 : 179;
 
       await Zipper.zip({ src: source, dest: destination });
 
       const st = await statAsync(destination);
-      expect(st.size).to.equal(179);
+      expect(st.size).to.equal(size);
     });
 
     after(async () => {
@@ -32,7 +34,7 @@ context('Zipper', () => {
 
     it('should unzip file', async () => {
       const readFileAsync = promisify(readFile);
-      const source = './test/resources/unzip/arch';
+      const source = './test/resources/unzip/arch.zip';
       const destination = './test/resources';
 
       await Zipper.unzip({ src: source, dest: destination });

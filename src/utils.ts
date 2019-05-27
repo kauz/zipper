@@ -71,7 +71,7 @@ export class Utils {
 
   static async runAdmUnzipping(options: iOptions): Promise<{stdout: string, stderr: string}> {
     console.time('adm');
-    const stdout = await Utils.exec(`node unzip --src ${options.src} --dest ${options.dest} --overwrite ${options.overwrite || false}`, {
+    const stdout = await Utils.exec(`node unzip --src ${options.src} --dest ${options.dest} --overwrite ${options.overwrite || false }`, {
       cwd: join(__dirname, '../scripts'),
     });
     console.timeEnd('adm');

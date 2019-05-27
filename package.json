@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Aleksey Olenyuk",
-  "contributors": [{"name": "Artyom Popov","email": "kauzlein@gmail.com"}],
+  "contributors": [
+    {
+      "name": "Artyom Popov",
+      "email": "kauzlein@gmail.com"
+    }
+  ],
   "scripts": {
     "build": "tsc -d -p tsconfig.json",
     "test": "mocha -r ts-node/register ./test/**/*.test.ts --exit"
   },
   "dependencies": {
     "adm-zip": "~0.4.7",
+    "commander": "^2.20.0",
     "gulp": "~4.0.2",
     "gulp-util": "~3.0.2",
-    "gulp-zip": "~2.0.2",
-    "optimist": "~0.6.1"
+    "gulp-zip": "~2.0.2"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.4.32",

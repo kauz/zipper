@@ -33,7 +33,7 @@ export class Zipper {
     if (isWindowsPlatform()) {
       return await Utils.runAdmUnzipping(extendedOptions);
     }
-    return await Utils.runNativeUnzipping(extendedOptions);
+    return await Utils.runAdmUnzipping(extendedOptions);
   }
 
   static getFileContent (options: iOptions) {

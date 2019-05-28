@@ -7,5 +7,5 @@ program.version('1.0.0')
     .option('-w, --overwrite [boolean]', 'Overwrite dest file if exists')
     .parse(process.argv);
 
-const zip = new AdmZip(program.src);
+const zip = new AdmZip(program.src, program.overwrite);
 zip.extractAllTo(program.dest);

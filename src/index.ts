@@ -1,12 +1,24 @@
 import { join, basename, dirname, normalize, sep } from 'path';
 import { platform } from 'os';
 import AdmZip from 'adm-zip';
+import * as tar from 'tar';
 import { Utils } from './utils';
-import { iOptions } from './interfaces';
+import { IGetFileContentOptions, ITarOptions, IUnzipOptions, IZipOptions } from './interfaces';
 
 export class Zipper {
 
-  static async zip (options: iOptions) {
+  static async tar(options: ITarOptions): Promise<void> {
+    const extendedOptions = Object.assign({}, options);
+
+    return new Promise<void>((resolve, reject) => {
+      tar
+        .create({ gzip: true, file: extendedOptions.dest }, extendedOptions.fileList)
+        .then(resolve)
+        .catch(reject);
+    });
+  }
+
+  static async zip (options: IZipOptions) {
     const extendedOptions = Object.assign({}, options);
 
     extendedOptions.name = basename(extendedOptions.dest);
@@ -25,7 +37,7 @@ export class Zipper {
 
   }
 
-  static async unzip (options: iOptions) {
+  static async unzip (options: IUnzipOptions) {
     const extendedOptions = Object.assign({}, options);
     extendedOptions.src = extendedOptions.absolute ? extendedOptions.src : getPath(extendedOptions.src);
     extendedOptions.dest = extendedOptions.absolute ? extendedOptions.dest : getPath(extendedOptions.dest);
@@ -36,7 +48,7 @@ export class Zipper {
     return await Utils.runAdmUnzipping(extendedOptions);
   }
 
-  static getFileContent (options: iOptions) {
+  static getFileContent (options: IGetFileContentOptions) {
     const extendedOptions = Object.assign({}, options);
 
     extendedOptions.src = extendedOptions.absolute ? extendedOptions.src : getPath(extendedOptions.src);

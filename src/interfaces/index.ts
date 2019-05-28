@@ -1,1 +1,1 @@
-export * from './iOptions';
+export * from './IOptions';

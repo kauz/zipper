@@ -11,20 +11,24 @@
   ],
   "scripts": {
     "build": "tsc -d -p tsconfig.json",
-    "test": "mocha -r ts-node/register ./test/**/*.test.ts --exit"
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "test": "mocha -r ts-node/register ./test/**/*.test.ts --exit",
+    "cleardist": "rm -rf dist/*"
   },
   "dependencies": {
     "adm-zip": "~0.4.7",
     "commander": "^2.20.0",
     "gulp": "~4.0.2",
     "gulp-util": "~3.0.2",
-    "gulp-zip": "~2.0.2"
+    "gulp-zip": "~2.0.2",
+    "tar": "^4.4.8"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.4.32",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "@types/node": "^12.0.2",
+    "@types/tar": "^4.0.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1",

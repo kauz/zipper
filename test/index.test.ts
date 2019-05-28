@@ -64,4 +64,26 @@ context('Zipper', () => {
 
   });
 
+
+  describe('tar', () => {
+
+    it('should make tar archive from list of files', async () => {
+      const statAsync = promisify(stat);
+      const fileList = ['./test/resources/zip/test.txt'];
+      const dest = './test/resources/zip.tar.gz';
+      const size = 150;
+
+      await Zipper.tar({ dest, fileList });
+
+      const st = await statAsync(dest);
+      expect(st.size).to.equal(size);
+    });
+
+    after(async () => {
+      const unlinkAsync = promisify(unlink);
+      await unlinkAsync('./test/resources/zip.tar.gz')
+    });
+
+  });
+
 });

@@ -80,14 +80,10 @@ export class Utils {
 
   static async exists(filePath: string): Promise<boolean> {
     try {
-      await Utils.statAsync(filePath);
+      await Utils.stat(filePath);
       return true;
     } catch (e) {
       return false;
     }
-  }
-
-  private static async statAsync(filePath: string): Promise<Stats> {
-    return await Utils.stat(filePath);
   }
 }
